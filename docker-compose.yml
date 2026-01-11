@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgis/postgis@sha256:44126d872ac91993766c341e369c539e8196614321765d36a6f1bab0419a5fa5
+    container_name: padova_db
+    restart: always
+    environment:
+      POSTGRES_USER: padovauser
+      POSTGRES_PASSWORD: waspeM-kuxzyp-mimco2
+      POSTGRES_DB: smart_flow_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: padova_cache
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data: 
